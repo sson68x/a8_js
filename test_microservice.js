@@ -27,6 +27,23 @@ async function getSalesTaxRate(zipCode) {
     }
 }
 
+// Route for the root path
+app.get('/', (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Welcome to Sales Tax Service</title>
+        </head>
+        <body>
+            <h1>Welcome to the Sales Tax Service</h1>
+            <p>Use the <code>/sales-tax</code> endpoint to calculate sales tax.</p>
+            <p>Example: <code>/sales-tax?zip=12345&subtotal=100.00</code></p>
+        </body>
+        </html>
+    `);
+});
+
 // Route to get sales tax based on zip code and subtotal
 app.get('/sales-tax', async (req, res) => {
     const zipCode = req.query.zip;
